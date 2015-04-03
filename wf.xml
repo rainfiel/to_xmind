@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<opml version="2.0">
+  <body>
+    <outline text="考虑点" >
+      <outline text="如何获得士兵" />
+      <outline text="士兵是否需要成长" />
+      <outline text="如何获得武器" />
+      <outline text="武器是否需要升级" />
+      <outline text="如何生产资源" />
+      <outline text="资源如何消耗" />
+      <outline text="资源是否会被掠夺" /></outline>
+    <outline text="备选方案" >
+      <outline text="类刀塔传奇的卡牌式" _note="成长体验类似，以士兵为核心，士兵职业相对固化，升级三围，提升被动技能" />
+      <outline text="以武器为核心的成长" />
+      <outline text=" 类COC的UGC" _note="玩家布置房间布局" />
+      <outline text="类BoomBeach的UGC" /></outline>
+  </body>
+</opml>
