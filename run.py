@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
+import os,sys
 import xmltodict as xml2dict
 import collections
 import codecs
@@ -56,8 +56,5 @@ def main(src, tar):
 	parseOPML(src, root)
 	writeXML(template, tar)
 
-def foo():
-	main("D:\\lib\\to_xmind\\wf.xml", "D:\\lib\\to_xmind\\content.xml")
-
 if __name__ == '__main__':
-	pass
+	main(sys.argv[1], sys.argv[2])
