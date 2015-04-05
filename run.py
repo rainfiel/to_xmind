@@ -5,6 +5,7 @@ import xmltodict as xml2dict
 import collections
 import codecs
 import string, random
+import zipfile
 
 
 def id_generator(size=26, chars=string.ascii_lowercase + string.digits):
@@ -61,11 +62,27 @@ def parseOPML(path, output):
 	root = src['opml']['body']['outline']
 	handleOutline(root, output)
 
-def main(src, tar):
+def createZip(name):
+	zfile = zipfile.ZipFile(name+".xmind", 'w')
+	tmp = os.path.join(os.getcwd(), 'template')
+	files = os.listdir(tmp)
+	for f in files:
+		zfile.write(os.path.join(tmp, f), f)
+
+	return zfile
+
+def main(src):
+	tar = os.path.splitext(src)[0]
+	zfile = createZip(tar)
+	content = os.path.join(os.getcwd(), "content.xml")
+
 	template = loadXML(os.path.join(os.getcwd(), "template/content.xml"))
 	root = template['xmap-content']['sheet']
 	parseOPML(src, root)
-	writeXML(template, tar)
+	writeXML(template, content)
+
+	zfile.write(content, "content.xml")
+	zfile.close()
 
 if __name__ == '__main__':
-	main(sys.argv[1], sys.argv[2])
+	main(sys.argv[1])
