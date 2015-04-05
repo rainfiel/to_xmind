@@ -32,6 +32,9 @@ def handleOutline(root, src):
 	if t == collections.OrderedDict:
 		node = collections.OrderedDict()
 		node['title'] = root['@text']
+		note = root.get('@_note',None)
+		if note:
+			node['notes'] = collections.OrderedDict({'html':collections.OrderedDict({'xhtml:p':note}), 'plain':note})
 
 		children = root.get('outline', None)
 		if children:
@@ -56,7 +59,7 @@ def handleOutline(root, src):
 def parseOPML(path, output):
 	src = loadXML(path)
 	root = src['opml']['body']['outline']
-	handleOutline(root[0], output)
+	handleOutline(root, output)
 
 def main(src, tar):
 	template = loadXML(os.path.join(os.getcwd(), "template/content.xml"))
